@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ODS 6 & ODS 9 — Água, Saneamento e Inovação</title>
+    <style>
+        :root {
+            --accent: #00796b;
+            --accent-2: #f57c00;
+            --muted: #6b6b6b;
+            --card: #ffffff;
+            --bg: #f5f7fb;
+            --radius: 12px;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: #111
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: #fff;
+            padding: 28px 20px;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 18px auto;
+            padding: 0 18px
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.6rem
+        }
+
+        header p {
+            margin: 6px 0 0;
+            opacity: 0.95
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 18px;
+            margin-top: 18px
+        }
+
+        @media (max-width:880px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .card {
+            background: var(--card);
+            padding: 18px;
+            border-radius: var(--radius);
+            box-shadow: 0 6px 20px rgba(12, 20, 30, 0.06)
+        }
+
+        h2 {
+            margin-top: 0
+        }
+
+        .ods-block {
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            gap: 12px;
+            align-items: center
+        }
+
+        .badge {
+            width: 72px;
+            height: 72px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem
+        }
+
+        .badge.ods6 {
+            background: #0b76b8
+        }
+
+        .badge.ods9 {
+            background: #f57c00
+        }
+
+        ul.tips {
+            padding-left: 1.1rem;
+            margin: 8px 0
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px
+        }
+
+        .btn {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 0;
+            background: var(--accent);
+            color: #fff;
+            cursor: pointer
+        }
+
+        .btn.secondary {
+            background: #eef6f6;
+            color: var(--accent)
+        }
+
+        .small {
+            font-size: 0.9rem
+        }
+
+        .checklist {
+            display: grid;
+            gap: 8px;
+            margin-top: 10px
+        }
+
+        .check {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        input[type=checkbox] {
+            width: 18px;
+            height: 18px
+        }
+
+        .resource {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center
+        }
+
+        .resource a {
+            color: var(--accent-2);
+            text-decoration: none
+        }
+
+        .pledge-form {
+            display: grid;
+            gap: 10px
+        }
+
+        input[type=text],
+        input[type=email],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #e1e4ea
+        }
+
+        footer {
+            margin: 28px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem
+        }
+
+        .progress {
+            background: linear-gradient(90deg, #c8f3ea, #e6f3ff);
+            padding: 12px;
+            border-radius: 10px
+        }
+
+        .meter {
+            height: 12px;
+            background: #e9eef5;
+            border-radius: 8px;
+            overflow: hidden
+        }
+
+        .meter>span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            width: 0
+        }
+
+        .toolbox {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .link-row {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .modal-back {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: none;
+            align-items: center;
+            justify-content: center
+        }
+
+        .modal {
+            background: var(--card);
+            padding: 18px;
+            border-radius: 12px;
+            max-width: 720px;
+            width: 94%
+        }
+
+        .modal h3 {
+            margin-top: 0
+        }
+
+        .close {
+            background: #eee;
+            border-radius: 8px;
+            padding: 6px 8px;
+            border: 0
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        a:focus,
+        button:focus,
+        input:focus {
+            outline: 3px solid rgba(2, 136, 209, 0.15);
+            outline-offset: 2px
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>ODS 6 & ODS 9 — Água Limpa e Infraestrutura</h1>
+            <p>Ferramentas práticas para comunidades — monitoramento, inovação e comprometimento local.</p>
+        </div>
+    </header>
+    <main class="container">
+        <div class="grid">
+
+            <!-- ODS 6 -->
+            <section class="card">
+                <div class="ods-block">
+                    <div class="badge ods6">ODS 6</div>
+                    <div>
+                        <h2>Água potável e saneamento</h2>
+                        <p class="small">Garantir água segura, saneamento e higiene — prevenir doenças e proteger
+                            ecossistemas aquáticos.</p>
+                    </div>
+                </div>
+                <hr style="border:none;height:12px;">
+                <h3>Ações práticas</h3>
+                <ul class="tips">
+                    <li>Mapear fontes de água e identificar riscos (contaminação, lixo).</li>
+                    <li>Promover pontos de coleta e descarte correto de resíduos.</li>
+                    <li>Oficinas de economia de água e reuso simples (cisternas, captação de chuva).</li>
+                    <li>Projetos escolares de monitoramento: medir pH, turbidez, registrar resultados.</li>
+                </ul>
+                <div class="actions">
+                    <button class="btn" onclick="openModal('monitor6')">Iniciar monitoramento</button>
+                    <button class="btn secondary" onclick="copyText('checklist6')">Copiar checklist</button>
+                </div>
+                <div style="margin-top:14px">
+                    <h3>Checklist de campo</h3>
+                    <div id="checklist6" class="checklist">
+                        <label class="check"><input type="checkbox" id="w1"> Identificar fontes e responsáveis</label>
+                        <label class="check"><input type="checkbox" id="w2"> Teste básico de turbidez/pH</label>
+                        <label class="check"><input type="checkbox" id="w3"> Equipe treinada para coleta</label>
+                        <label class="check"><input type="checkbox" id="w4"> Plano de comunicação e limpeza</label>
+                    </div>
+                </div>
+                <hr>
+                <h3>Recursos úteis</h3>
+                <div class="resource">
+                    <div>
+                        <strong>Cadernos ODS & vídeos explicativos</strong>
+                        <div class="small">Use guias do IBGE e materiais didáticos para planejar ações práticas.</div>
+                    </div>
+                    <div><button class="btn secondary" onclick="openModal('resources')">Ver</button></div>
+                </div>
+            </section>
+
+            <!-- ODS 9 -->
+            <aside class="card">
+                <div class="ods-block">
+                    <div class="badge ods9">ODS 9</div>
+                    <div>
+                        <h2>Indústria, Inovação e Infraestrutura</h2>
+                        <p class="small">Promover infraestrutura resiliente, industrialização sustentável e inovação
+                            tecnológica.</p>
+                    </div>
+                </div>
+                <hr style="border:none;height:12px;">
+                <h3>Ações práticas</h3>
+                <ul class="tips">
+                    <li>Mapear infraestrutura local: transporte, energia, saneamento.</li>
+                    <li>Incentivar projetos de inovação tecnológica ou social na comunidade.</li>
+                    <li>Oficinas para estudantes e jovens: prototipagem, ciência cidadã e empreendedorismo.</li>
+                    <li>Registrar melhorias e impactos para propor ações públicas ou privadas.</li>
+                </ul>
+                <div class="actions">
+                    <button class="btn" onclick="openModal('project9')">Planejar projeto de inovação</button>
+                    <button class="btn secondary" onclick="copyText('checklist9')">Copiar checklist</button>
+                </div>
+                <div style="margin-top:14px">
+                    <h3>Checklist rápido</h3>
+                    <div id="checklist9" class="checklist">
+                        <label class="check"><input type="checkbox" id="i1"> Avaliar infraestrutura local</label>
+                        <label class="check"><input type="checkbox" id="i2"> Levantar oportunidades de inovação</label>
+                        <label class="check"><input type="checkbox" id="i3"> Equipe envolvida em protótipos ou
+                            oficinas</label>
+                        <label class="check"><input type="checkbox" id="i4"> Relatório de impactos gerado</label>
+                    </div>
+                </div>
+                <hr>
+                <h3>Recursos e parcerias</h3>
+                <div class="resource">
+                    <div>
+                        <strong>Guias de inovação e ciência cidadã</strong>
+                        <div class="small">Use materiais de universidades, startups ou instituições de fomento.</div>
+                    </div>
+                    <div><button class="btn secondary" onclick="openModal('resources')">Ver</button></div>
+                </div>
+            </aside>
+
+        </div>
+
+
+        <div id="modalBack" class="modal-back" onclick="closeModal(event)">
+            <div class="modal" role="dialog" aria-modal="true" id="modalContent">
+                <button class="close" onclick="closeModalBtn()">Fechar</button>
+                <div id="modalBody" style="margin-top:10px"></div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-links">
+                <button class="btn secondary" onclick="downloadHTML()">Baixar site (HTML)</button>
+                <button class="btn" onclick="resetDemo()">Limpar dados demo</button>
+            </div>
+            <div style="margin-top:8px">Feito para inspirar ações locais — personalize para sua comunidade.</div>
+        </footer>
+
+        <script>
+
+            function copyText(id) {
+                const el = document.getElementById(id);
+                const text = el ? el.innerText : '';
+                navigator.clipboard && navigator.clipboard.writeText(text).then(() => alert('Texto copiado!'), () => alert('Não foi possível copiar.'));
+            }
+
+
+            function openModal(id) {
+                let html = '';
+                if (id === 'monitor6') html = monitor6();
+                if (id === 'project9') html = project9();
+                if (id === 'resources') html = resourcesTemplate();
+                document.getElementById('modalBody').innerHTML = html;
+                document.getElementById('modalBack').style.display = 'flex';
+            }
+            function openModalWithHTML(title, html) { document.getElementById('modalBody').innerHTML = <h3>${title}</h3>${ html }; document.getElementById('modalBack').style.display = 'flex'; }
+            function closeModal(e) { if (e.target.id === 'modalBack') closeModalBtn(); }
+            function closeModalBtn() { document.getElementById('modalBack').style.display = 'none'; }
+
+
+            function monitor6() {
+                return `<h3>Formulário de monitoramento - Água</h3>
+<label>Local: <input type="text" id="m_local"></label><br>
+<label>Data: <input type="date" id="m_date"></label>
+<p><label>Turbidez (visual): <select id="m_turb"><option>Claro</option><option>Um pouco turvo</option><option>Turvo</option></select></label></p>
+<p><label>Observações: <textarea id="m_obs" rows="3"></textarea></label></p>
+<p><button class="btn" onclick="saveMonitor6()">Salvar observação</button></p>`;
+            }
+            function saveMonitor6() {
+                const local = document.getElementById('m_local').value || '—';
+                const date = document.getElementById('m_date').value || new Date().toISOString().slice(0, 10);
+                const turb = document.getElementById('m_turb').value;
+                const obs = document.getElementById('m_obs').value;
+                const list = JSON.parse(localStorage.getItem('monitor6') || '[]');
+                list.push({ local, date, turb, obs, created: new Date().toISOString() });
+                localStorage.setItem('monitor6', JSON.stringify(list));
+                alert('Observação salva localmente.');
+            }
+            function project9() {
+
+                return `<h3>Planejar projeto de inovação</h3>
+<ol>
+<li>Identificar necessidade ou oportunidade na comunidade.</li>
+<li>Propor solução tecnológica, social ou de infraestrutura.</li>
+<li>Montar equipe e recursos.</li>
+<li>Registrar impacto esperado e plano de implementação.</li>
+</ol>`;
+            }
+            function resourcesTemplate() {
+                return `<h3>Recursos úteis</h3>
+<ul>
+<li>Guias do IBGE, materiais educativos e kits de ciência cidadã.</li>
+<li>Parcerias com universidades e instituições de fomento.</li>
+<li>Vídeos de oficinas, prototipagem e monitoramento.</li>
+</ul>`;
+            }
+
+            function downloadHTML() { const doc = '<!doctype html>\n' + document.documentElement.outerHTML; const blob = new Blob([doc], { type: 'text/html' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'ods6-ods9-site.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); }
+
+            function resetDemo() { if (confirm('Apagar dados locais (monitoramento)?')) { localStorage.removeItem('monitor6'); alert('Dados apagados.'); } }
+        </script>
+</body>
+
+</html>
