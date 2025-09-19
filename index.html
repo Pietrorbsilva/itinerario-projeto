@@ -266,8 +266,6 @@
     </header>
     <main class="container">
         <div class="grid">
-
-            <!-- ODS 6 -->
             <section class="card">
                 <div class="ods-block">
                     <div class="badge ods6">ODS 6</div>
@@ -308,8 +306,6 @@
                     <div><button class="btn secondary" onclick="openModal('resources')">Ver</button></div>
                 </div>
             </section>
-
-            <!-- ODS 9 -->
             <aside class="card">
                 <div class="ods-block">
                     <div class="badge ods9">ODS 9</div>
@@ -351,17 +347,13 @@
                     <div><button class="btn secondary" onclick="openModal('resources')">Ver</button></div>
                 </div>
             </aside>
-
         </div>
-
-
         <div id="modalBack" class="modal-back" onclick="closeModal(event)">
             <div class="modal" role="dialog" aria-modal="true" id="modalContent">
                 <button class="close" onclick="closeModalBtn()">Fechar</button>
                 <div id="modalBody" style="margin-top:10px"></div>
             </div>
         </div>
-
         <footer>
             <div class="footer-links">
                 <button class="btn secondary" onclick="downloadHTML()">Baixar site (HTML)</button>
@@ -369,16 +361,12 @@
             </div>
             <div style="margin-top:8px">Feito para inspirar ações locais — personalize para sua comunidade.</div>
         </footer>
-
         <script>
-
             function copyText(id) {
                 const el = document.getElementById(id);
                 const text = el ? el.innerText : '';
                 navigator.clipboard && navigator.clipboard.writeText(text).then(() => alert('Texto copiado!'), () => alert('Não foi possível copiar.'));
             }
-
-
             function openModal(id) {
                 let html = '';
                 if (id === 'monitor6') html = monitor6();
@@ -387,11 +375,8 @@
                 document.getElementById('modalBody').innerHTML = html;
                 document.getElementById('modalBack').style.display = 'flex';
             }
-            function openModalWithHTML(title, html) { document.getElementById('modalBody').innerHTML = <h3>${title}</h3>${ html }; document.getElementById('modalBack').style.display = 'flex'; }
             function closeModal(e) { if (e.target.id === 'modalBack') closeModalBtn(); }
             function closeModalBtn() { document.getElementById('modalBack').style.display = 'none'; }
-
-
             function monitor6() {
                 return `<h3>Formulário de monitoramento - Água</h3>
 <label>Local: <input type="text" id="m_local"></label><br>
@@ -411,7 +396,6 @@
                 alert('Observação salva localmente.');
             }
             function project9() {
-
                 return `<h3>Planejar projeto de inovação</h3>
 <ol>
 <li>Identificar necessidade ou oportunidade na comunidade.</li>
@@ -428,10 +412,24 @@
 <li>Vídeos de oficinas, prototipagem e monitoramento.</li>
 </ul>`;
             }
-
-            function downloadHTML() { const doc = '<!doctype html>\n' + document.documentElement.outerHTML; const blob = new Blob([doc], { type: 'text/html' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'ods6-ods9-site.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); }
-
-            function resetDemo() { if (confirm('Apagar dados locais (monitoramento)?')) { localStorage.removeItem('monitor6'); alert('Dados apagados.'); } }
+            function downloadHTML() {
+                const doc = '<!doctype html>\n' + document.documentElement.outerHTML;
+                const blob = new Blob([doc], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'ods6-ods9-site.html';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                URL.revokeObjectURL(url);
+            }
+            function resetDemo() {
+                if (confirm('Apagar dados locais (monitoramento)?')) {
+                    localStorage.removeItem('monitor6');
+                    alert('Dados apagados.');
+                }
+            }
         </script>
 </body>
 
